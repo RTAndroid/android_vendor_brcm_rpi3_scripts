@@ -1,0 +1,36 @@
+diff -urN a/boot/config.txt b/boot/config.txt
+--- boot/config.txt	2017-01-14 10:43:33.261981080 +0100
++++ boot/config.txt	2017-01-14 10:46:49.711975447 +0100
+@@ -1,15 +1,17 @@
+ hdmi_force_hotplug=1
+ hdmi_drive=2
+ hdmi_group=2
+-hdmi_mode=85
+-disable_overscan=1
+-config_hdmi_boost=5
++hdmi_mode=87
++hdmi_cvt=800 480 60 6 0 0 0
+ kernel=zImage
+ device_tree=bcm2710-rpi-3-b.dtb
+ dtparam=audio=on
+ dtparam=i2c1=on
+ dtparam=i2c_arm=on
+ dtoverlay=vc4-kms-v3d,cma-256
++dtoverlay=i2c-rtc,ds3231
++dtoverlay=rpi-backlight
++dtoverlay=rpi-ft5406
+ initramfs ramdisk.img 0x01f00000
+ mask_gpu_interrupt0=0x400
+ avoid_warnings=2
+diff -urN a/system/build.prop b/system/build.prop
+--- system/build.prop	2017-01-14 10:43:45.599461656 +0100
++++ system/build.prop	2017-01-14 10:45:22.272038933 +0100
+@@ -44,7 +44,7 @@
+ #
+ # from device/brcm/rpi3/system.prop
+ #
+-debug.drm.mode.force=1280x720
++#debug.drm.mode.force=1280x720
+ ril.function.dataonly=1
+ ro.build.selinux=1
+ ro.build.characteristics=tablet

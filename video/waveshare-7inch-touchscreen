@@ -1,0 +1,24 @@
+diff --git a/boot/config.txt b/boot/config.txt
+index 75fb5c3..af85fda 100644
+--- a/boot/config.txt
++++ b/boot/config.txt
+@@ -1,9 +1,4 @@
+ hdmi_force_hotplug=1
+-hdmi_drive=2
+-hdmi_group=2
+-hdmi_mode=85
+-disable_overscan=1
+-config_hdmi_boost=5
+ kernel=zImage
+ device_tree=bcm2710-rpi-3-b.dtb
+ dtparam=audio=on
+diff --git a/system/build.prop b/system/build.prop
+index 3d29778..a65a6f8 100644
+--- a/system/build.prop
++++ b/system/build.prop
+@@ -1,4 +1,4 @@
+-debug.drm.mode.force=1280x720
++debug.drm.mode.force=1024x768
+ ril.function.dataonly=1
+ ro.build.selinux=1
+ ro.build.characteristics=tablet
