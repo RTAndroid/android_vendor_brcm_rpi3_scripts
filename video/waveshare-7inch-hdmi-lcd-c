@@ -1,4 +1,4 @@
-diff -ru boot/config.txt boot/config.txt
+diff -urN boot/config.txt boot/config.txt
 --- boot/config.txt	2017-02-07 16:25:14.005586941 +0100
 +++ boot/config.txt	2017-02-07 16:27:43.868891459 +0100
 @@ -1,7 +1,8 @@
@@ -11,10 +11,13 @@ diff -ru boot/config.txt boot/config.txt
  config_hdmi_boost=5
  disable_overscan=1
  kernel=zImage
-diff -ru system/build.prop system/build.prop
+diff -urN a/system/build.prop b/system/build.prop
 --- system/build.prop	2017-02-07 16:25:20.818128082 +0100
 +++ system/build.prop	2017-02-07 16:28:21.783574270 +0100
-@@ -1,4 +1,4 @@
+@@ -44,7 +44,7 @@
+ #
+ # from device/brcm/rpi3/system.prop
+ #
 -debug.drm.mode.force=1280x720
 +debug.drm.mode.force=1024x600
  ril.function.dataonly=1
