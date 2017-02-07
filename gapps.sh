@@ -175,7 +175,7 @@ install_package()
 
 write_script()
 {
-    adb shell echo "$1" >> $INIT_FILE
+    adb shell "echo '$1' >> $INIT_FILE"
 }
 
 create_script()
@@ -188,6 +188,7 @@ create_script()
     echo "  - creating a new init file"
     adb shell rm -rf $INIT_FILE
     adb shell touch $INIT_FILE
+    adb shell chmod 755 $INIT_FILE
 
     echo "  - adding required permissions"
     write_script "#!/system/bin/sh"
