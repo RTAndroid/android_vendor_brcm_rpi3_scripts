@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# Copyright (C) 2016 RTAndroid Project
+# Copyright (C) 2017 RTAndroid Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,10 +19,10 @@
 #
 # OpenGApps installation script
 # Author: Igor Kalkov
-# https://github.com/RTAndroid/android_device_brcm_rpi3/blob/aosp-7.1/scripts/gapps.sh
+# https://github.com/RTAndroid/android_vendor_brcm_rpi3_scripts/blob/aosp-7.1/scripts/gapps.sh
 #
 
-TIMESTAMP="20170117"
+TIMESTAMP="20170207"
 VERSION="7.1"
 VARIANT="pico"
 

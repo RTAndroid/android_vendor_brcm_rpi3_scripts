@@ -18,8 +18,8 @@
 
 #
 # Android video configuration script for Raspberry Pi 3
-# Author: Igor Kalkov, Maximilian Schander
-# https://github.com/RTAndroid/android_device_brcm_rpi3/blob/aosp-n/scripts/video.sh
+# Author: Igor Kalkov
+# https://github.com/RTAndroid/android_vendor_brcm_rpi3_scripts/blob/aosp-7.1/scripts/video.sh
 #
 
 GITHUB_API="https://api.github.com/repos"

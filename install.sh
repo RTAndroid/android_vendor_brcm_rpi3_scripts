@@ -19,21 +19,18 @@
 #
 # Android image installation script for Raspberry Pi 3
 # Author: Igor Kalkov
-# https://github.com/RTAndroid/android_device_brcm_rpi3/blob/aosp-n/scripts/install.sh
+# https://github.com/RTAndroid/android_vendor_brcm_rpi3_scripts/blob/aosp-7.1/scripts/install.sh
 #
 
-# global program variables
 DEVICE_LOCATION=""
 DEVICE_NAME=""
 DEVICE_SIZE=""
 DEVICE_SUFFIX=""
 
-# internal flags
 PARTITION=false
 PARTITION_NEEDED=false
 FORMAT=false
 
-# constants for the sdcard and partitions
 SIZE_P1=512   # exact size of the partition 1 (boot) in MB
 SIZE_P2=2048  # exact size of the partition 2 (system) in MB
 SIZE_P3=512   # exact size of the partition 3 (cache) in MB
