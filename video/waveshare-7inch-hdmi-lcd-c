@@ -4,9 +4,11 @@ index 75fb5c3..af85fda 100644
 +++ b/boot/config.txt
 @@ -1,9 +1,4 @@
  hdmi_force_hotplug=1
--hdmi_drive=2
--hdmi_group=2
+ hdmi_drive=2
+ hdmi_group=2
 -hdmi_mode=85
++hdmi_mode=87
++hdmi_cvt 1024 600 60 6 0 0 0
 -disable_overscan=1
 -config_hdmi_boost=5
  kernel=zImage
@@ -18,7 +20,7 @@ index 3d29778..a65a6f8 100644
 +++ b/system/build.prop
 @@ -1,4 +1,4 @@
 -debug.drm.mode.force=1280x720
-+debug.drm.mode.force=1024x768
++debug.drm.mode.force=1024x600
  ril.function.dataonly=1
  ro.build.selinux=1
  ro.build.characteristics=tablet
