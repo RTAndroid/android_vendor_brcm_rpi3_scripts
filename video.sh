@@ -25,7 +25,7 @@
 GITHUB_API="https://api.github.com/repos"
 GITHUB_RAW="https://raw.githubusercontent.com"
 
-REPO_NAME="RTAndroid/android_device_brcm_rpi3"
+REPO_NAME="RTAndroid/android_vendor_brcm_rpi3_scripts"
 REPO_BRANCH="aosp-7.1"
 REPO_LISTING="$GITHUB_API/$REPO_NAME/contents/video?ref=$REPO_BRANCH"
 REPO_FILES="$GITHUB_RAW/$REPO_NAME/$REPO_BRANCH/video"
@@ -206,4 +206,3 @@ unmount_partitions
 
 echo ""
 echo "Configuration successful. You can now put your sdcard in the RPi."
-
