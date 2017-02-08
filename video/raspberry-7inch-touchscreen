@@ -6,10 +6,10 @@ diff -urN a/boot/config.txt b/boot/config.txt
  hdmi_drive=2
  hdmi_group=2
 -hdmi_mode=85
--disable_overscan=1
--config_hdmi_boost=5
 +hdmi_mode=87
 +hdmi_cvt=800 480 60 6 0 0 0
+-config_hdmi_boost=5
+-disable_overscan=1
  kernel=zImage
  device_tree=bcm2710-rpi-3-b.dtb
  dtparam=audio=on

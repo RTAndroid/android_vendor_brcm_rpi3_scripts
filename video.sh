@@ -129,7 +129,6 @@ patch_partitions()
 
     if [ $RESULT -ne 0 ]; then
         echo "ERR: Patching failed!"
-        exit 1
     fi
 }
 
