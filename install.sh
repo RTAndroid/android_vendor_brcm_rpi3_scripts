@@ -74,13 +74,19 @@ check_device()
 
     if [[ -z "$DEVICE_LOCATION" ]]; then
         echo ""
-        echo "ERR: device location not valid."
+        echo "ERR: device location cannot be empty."
         exit 1
     fi
 
     if [[ ! -b "$DEVICE_LOCATION" ]]; then
         echo ""
         echo "ERR: no block device was found in $DEVICE_LOCATION!"
+        exit 1
+    fi
+
+    if [[ "$DEVICE_LOCATION" == "/sd[[:alpha:]][[:digit:]]" ]]; then
+        echo ""
+        echo "ERR: you cannot install RTAndroid on a single partition"
         exit 1
     fi
 
@@ -93,6 +99,7 @@ check_device()
     if [[ ! -f "$SIZE_FILE" ]]; then
         echo ""
         echo "ERR: can't detect the size of the sdcard!"
+        exit 1
     fi
 
     REQUIRED_SIZE_MB=$((SIZE_P1 + SIZE_P2 + SIZE_P3 + SIZE_P4))
@@ -109,7 +116,7 @@ check_device()
     fi
 
     # some card readers mount the sdcard as /dev/mmcblkXp? instead of /dev/sdX?
-    if [[ $DEVICE_NAME == "mmcblk"* ]]; then
+    if [[ "$DEVICE_NAME" == "mmcblk"* ]]; then
         echo " * Using device suffix 'p' (mmcblk device)"
         DEVICE_SUFFIX="p"
     fi

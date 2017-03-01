@@ -48,10 +48,29 @@ OPTIONS:
 EOF
 }
 
+check_agreement()
+{
+    echo "AGREEMENT NOTE:"
+    echo "This script is supplied 'as is', please use it at your own risk."
+    echo "We take no responsibility for any hardware damage or data loss"
+    echo "caused by the installation of third-party applications. As these"
+    echo "applications are not part of the official RTAndroid distribution,"
+    echo "we provide no support for GApps-related issues."
+
+    echo ""
+    read -p "Please indicate your agreement by typing 'Y': " -n 1 -r response
+    echo ""
+    echo ""
+
+    if [[ ! $response =~ ^[yY]$ ]]; then
+        exit 1
+    fi
+}
+
 check_dependency()
 {
     which $1 > /dev/null
-    if (($? != 0));then
+    if (($? != 0)); then
         echo "ERR: $1 not found. Please install: \"$2\""
         exit 1
     fi
@@ -246,6 +265,7 @@ echo ""
 check_dependency adb phablet-tools
 check_dependency lzip lzip
 
+check_agreement
 prepare_device
 prepare_gapps
 create_partition
