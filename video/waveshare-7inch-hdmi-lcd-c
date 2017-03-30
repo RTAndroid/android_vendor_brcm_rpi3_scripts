@@ -19,7 +19,7 @@ diff -urN a/system/build.prop b/system/build.prop
  # from device/brcm/rpi3/system.prop
  #
 -debug.drm.mode.force=1280x720
-+debug.drm.mode.force=1024x600
++#debug.drm.mode.force=1280x720
  ril.function.dataonly=1
  ro.build.selinux=1
  ro.build.characteristics=tablet
