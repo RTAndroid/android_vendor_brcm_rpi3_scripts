@@ -11,7 +11,6 @@ diff -urN a/boot/config.txt b/boot/config.txt
 -config_hdmi_boost=5
 -disable_overscan=1
  kernel=zImage
- device_tree=bcm2710-rpi-3-b.dtb
  dtparam=audio=on
  dtparam=i2c1=on
  dtparam=i2c_arm=on
