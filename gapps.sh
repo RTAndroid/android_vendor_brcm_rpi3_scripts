@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# Copyright (C) 2017 RTAndroid Project
+# Copyright (C) 2016 RTAndroid Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,17 +19,17 @@
 #
 # OpenGApps installation script
 # Author: Igor Kalkov
-# https://github.com/RTAndroid/android_vendor_brcm_rpi3_scripts/blob/aosp-7.1/scripts/gapps.sh
+# https://github.com/RTAndroid/android_device_brcm_rpi3/blob/aosp-7.1/scripts/gapps.sh
 #
 
-TIMESTAMP="20170207"
+TIMESTAMP="20191029"
 VERSION="7.1"
 VARIANT="pico"
 
 SHOW_HELP=false
-ADB_ADDRESS=""
-ARCHITECTURE=""
-PACKAGE_NAME=""
+ADB_ADDRESS="192.168.0.134"
+ARCHITECTURE="arm"
+PACKAGE_NAME="pico"
 INIT_FILE="/etc/init.d/gapps"
 
 # ------------------------------------------------
@@ -48,29 +48,10 @@ OPTIONS:
 EOF
 }
 
-check_agreement()
-{
-    echo "AGREEMENT NOTE:"
-    echo "This script is supplied 'as is', please use it at your own risk."
-    echo "We take no responsibility for any hardware damage or data loss"
-    echo "caused by the installation of third-party applications. As these"
-    echo "applications are not part of the official RTAndroid distribution,"
-    echo "we provide no support for GApps-related issues."
-
-    echo ""
-    read -p "Please indicate your agreement by typing 'Y': " -n 1 -r response
-    echo ""
-    echo ""
-
-    if [[ ! $response =~ ^[yY]$ ]]; then
-        exit 1
-    fi
-}
-
 check_dependency()
 {
     which $1 > /dev/null
-    if (($? != 0)); then
+    if (($? != 0));then
         echo "ERR: $1 not found. Please install: \"$2\""
         exit 1
     fi
@@ -129,7 +110,7 @@ prepare_gapps()
     if [ ! -d "gapps/pkg" ]; then
         echo " * Downloading OpenGApps package..."
         echo ""
-        wget https://github.com/opengapps/$ARCHITECTURE/releases/download/$TIMESTAMP/$PACKAGE_NAME -O gapps/$PACKAGE_NAME
+    wget https://sourceforge.net/projects/opengapps/files/$ARCHITECTURE/20191029/$PACKAGE_NAME -O gapps/$PACKAGE_NAME
     fi
 
     if [ ! -f "gapps/$PACKAGE_NAME" ]; then
@@ -182,9 +163,9 @@ install_package()
 
     echo " * Setting up the package installer..."
     count=$(adb shell ls -al /system/priv-app/ | grep -o Installer | wc -l)
-    if [ "$count" == 1 ]; then
+    if [ $count == 1 ]; then
         echo "  - only one package installer found, leaving it as it is..."
-    elif [ "$count" == 2 ]; then
+    elif [ $count == 2 ]; then
         echo "  - two package installers found, removing the stock one..."
         adb shell "rm -rf /system/priv-app/PackageInstaller"
     else
@@ -194,7 +175,7 @@ install_package()
 
 write_script()
 {
-    adb shell "echo '$1' >> $INIT_FILE"
+    adb shell echo "$1" >> $INIT_FILE
 }
 
 create_script()
@@ -207,7 +188,6 @@ create_script()
     echo "  - creating a new init file"
     adb shell rm -rf $INIT_FILE
     adb shell touch $INIT_FILE
-    adb shell chmod 755 $INIT_FILE
 
     echo "  - adding required permissions"
     write_script "#!/system/bin/sh"
@@ -265,7 +245,6 @@ echo ""
 check_dependency adb phablet-tools
 check_dependency lzip lzip
 
-check_agreement
 prepare_device
 prepare_gapps
 create_partition
